@@ -1,0 +1,85 @@
+body {
+	padding: 0;
+	margin: 0;
+	background-color: #faf8ef;
+}
+
+header {
+	text-align: center;
+}
+
+header h1 {
+	color: #776e65;
+}
+
+header a {
+	text-decoration: none;
+	border-radius: 5px;
+	background-color: #8f7a66;
+	padding: 5px 10px;
+	color: #fff;
+}
+
+header a:hover {
+	background-color: #bb7737;
+}
+
+.container {
+	background-color: #bbada0;
+	width: 500px;
+	height: 500px;
+	border-radius: 10px;
+	position: relative;
+	margin: 0 auto;
+}
+
+.container .gameover {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(238, 228, 218, 0.5);
+	z-index: 100;
+	text-align: center;
+	animation: fade-in 800ms ease 1200ms;
+}
+
+.container .gameover p{
+	font-size: 60px;
+	font-weight: bold;
+	height: 60px;
+	line-height: 60px;
+	color: #8f7a66;
+	margin-top: 180px;
+}
+
+.container .gameover a{
+	display: inline-block;
+	background: #8f7a66;
+	border-radius: 5px;
+	padding: 0 20px;
+	text-decoration: none;
+	color: #f9f6f2;
+	height: 40px;
+	line-height: 42px;
+	margin-left: 9px;
+}
+
+.container .cell {
+	background-color: #ccc0b3;
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	border-radius: 10px;
+}
+
+.container .number-cell {
+	position: absolute;
+	font-size: 24px;
+	border-radius: 10px;
+	text-align: center;
+	line-height: 100px;
+	font-family: "微软雅黑";
+}
