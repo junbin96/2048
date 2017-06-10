@@ -121,25 +121,25 @@ $(document).keydown(function(event) {
 	}
 })
 
-$(document).on('swipeUp', function() {
+$("#cell-container").on('swipeUp', function() {
 	if(moveUp()) {
 				setTimeout('oneNumber()', 210);
 				setTimeout('isgameover()', 400);
 			}
 });
-$(document).on('swipeDown', function() {
+$("#cell-container").on('swipeDown', function() {
 	if(moveDown()) {
 				setTimeout('oneNumber()', 210);
 				setTimeout('isgameover()', 400);
 			}
 });
-$(document).on('swipeLeft', function() {
+$("#cell-container").on('swipeLeft', function() {
 	if(moveLeft()) {
 				setTimeout('oneNumber()', 210);
 				setTimeout('isgameover()', 400);
 			}
 });
-$(document).on('swipeRight', function() {
+$("#cell-container").on('swipeRight', function() {
 	if(moveRight()) {
 				setTimeout('oneNumber()', 210);
 				setTimeout('isgameover()', 400);
