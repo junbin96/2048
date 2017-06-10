@@ -300,4 +300,6 @@ function moveDown() {
 	setTimeout('updateBoardView()', 200);
 	return true;
 }
-
+ $(document).on('touchmove',function(e){
+ e.preventDefault();
+ })
