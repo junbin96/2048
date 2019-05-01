@@ -4,6 +4,7 @@ body {
 	margin: 0;
 	background-color: #faf8ef;
 	position:fixed;
+	width:100%;
 }
 
 header {
