@@ -5,8 +5,8 @@ function showNumber(i, j, number) {
 	theNumber.text(getText(number));
 
 	theNumber.animate({
-		width: '100px',
-		height: '100px',
+		width: '1rem',
+		height: '1rem',
 		top: getPosTop(i, j),
 		left: getPosLeft(i, j)
 	}, 50)

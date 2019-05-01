@@ -1,9 +1,17 @@
 function getPosTop(i, j) {
-	return 20 + i * 120;
+	return 0.2 + i * 1.2+'rem';
 }
 
 function getPosLeft(i, j) {
-	return 20 + j * 120;
+	return 0.2 + j * 1.2+'rem';
+}
+
+function getInitPosTop(i, j) {
+	return 0.7 + i * 1.2+'rem';
+}
+
+function getInitPosLeft(i, j) {
+	return 0.7 + j * 1.2+'rem';
 }
 
 function getBg(number) {
@@ -49,37 +57,37 @@ function getBg(number) {
 function getText(number) {
 	switch(number) {
 		case 2:
-			return "幼儿园";
+			return "2";
 			break;
 		case 4:
-			return "小学生";
+			return "4";
 			break;
 		case 8:
-			return "初中生";
+			return "8";
 			break;
 		case 16:
-			return "高中生";
+			return "16";
 			break;
 		case 32:
-			return "大学生";
+			return "32";
 			break;
 		case 64:
-			return "硕士生";
+			return "64";
 			break;
 		case 128:
-			return "博士生";
+			return "128";
 			break;
 		case 256:
-			return "博士后";
+			return "256";
 			break;
 		case 512:
-			return "助教";
+			return "512";
 			break;
 		case 1024:
-			return "副教授";
+			return "1024";
 			break;
 		case 2048:
-			return "教授";
+			return "2048";
 			break;
 	}
 }

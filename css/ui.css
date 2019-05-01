@@ -1,3 +1,4 @@
+* { touch-action: pan-y; } 
 body {
 	padding: 0;
 	margin: 0;
@@ -6,29 +7,53 @@ body {
 
 header {
 	text-align: center;
+	width: 5rem;
+	margin: 0 auto;
 }
 
-header h1 {
+header .title {
 	color: #776e65;
+	font-size: 0.5rem;
+	margin: 0;
+	margin-top: 0.5rem;
 }
-
-header a {
+.box{
+	text-align: center;
+	font-size: 0.4rem;
+	width: 5rem;
+	margin: 0 auto;
+	padding:0.2rem 0;
+}
+.box .btn {
 	text-decoration: none;
-	border-radius: 5px;
+	border-radius: 0.05rem;
 	background-color: #8f7a66;
-	padding: 5px 10px;
+	padding: 0.07rem 0.1rem;
 	color: #fff;
+	font-size: 0.3rem;
+	float: left;
 }
 
-header a:hover {
+.box .btn:hover {
 	background-color: #bb7737;
+}
+
+.box .score{
+	display: inline-block;
+	font-size: 0.4rem;
+	width: 3rem;
+}
+.box #score{
+	display: inline-block;
+	font-size: 0.4rem;
+	width: 100px;
 }
 
 .container {
 	background-color: #bbada0;
-	width: 500px;
-	height: 500px;
-	border-radius: 10px;
+	width: 5rem;
+	height: 5rem;
+	border-radius: 0.1rem;
 	position: relative;
 	margin: 0 auto;
 }
@@ -47,39 +72,48 @@ header a:hover {
 }
 
 .container .gameover p{
-	font-size: 60px;
+	font-size: 0.6rem;
 	font-weight: bold;
-	height: 60px;
-	line-height: 60px;
+	height: 0.6rem;
+	line-height: 0.6rem;
 	color: #8f7a66;
-	margin-top: 180px;
+	margin-top: 1.8rem;
+	margin-bottom: 0;
 }
 
 .container .gameover a{
 	display: inline-block;
 	background: #8f7a66;
-	border-radius: 5px;
-	padding: 0 20px;
+	border-radius: 0.05rem;
+	padding: 0 0.2rem;
 	text-decoration: none;
 	color: #f9f6f2;
-	height: 40px;
-	line-height: 42px;
-	margin-left: 9px;
+	height: 1rem;
+	line-height: 1rem;
+	font-size: 0.7rem;
 }
 
 .container .cell {
 	background-color: #ccc0b3;
 	position: absolute;
-	width: 100px;
-	height: 100px;
-	border-radius: 10px;
+	width: 1rem;
+	height: 1rem;
+	border-radius: 0.1rem;
 }
 
 .container .number-cell {
 	position: absolute;
-	font-size: 24px;
-	border-radius: 10px;
+	font-size: 0.24rem;
+	border-radius: 0.1rem;
 	text-align: center;
-	line-height: 100px;
+	line-height: 1rem;
 	font-family: "微软雅黑";
 }
+
+html { font-size:100px; }
+@media(max-width:540px){ html { font-size:84.375px; } } /*Android常用宽度*/
+@media(max-width:480px){ html { font-size:75px; } }		/*Android常用宽度*/
+@media(max-width:414px){ html { font-size:64.69px; } }  /*i6Plus,i7Plus宽度*/  
+@media(max-width:375px){ html { font-size:58.59px; } }	/*i6,i7宽度*/
+@media(max-width:360px){ html { font-size:56.25px; } }	/*Android常用宽度*/
+@media(max-width:320px){ html { font-size:50px; } }		/*i5宽度*/

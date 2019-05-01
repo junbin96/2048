@@ -1,12 +1,12 @@
 var board = new Array();
 var score = 0;
 var hasConflicted = new Array();
-$(function() {
+$(function () {
 
 	newgame()
 })
 
-function newgame() {
+function newgame () {
 	//初始化
 	init();
 
@@ -19,21 +19,21 @@ function newgame() {
 
 }
 
-function init() {
+function init () {
 	$('.gameover').css('display', 'none');
 	//将初始的块排列
-	for(var i = 0; i < 4; i++) {
-		for(var j = 0; j < 4; j++) {
+	for (var i = 0; i < 4; i++) {
+		for (var j = 0; j < 4; j++) {
 			var Cell = $('#cell-' + i + j);
 			Cell.css('top', getPosTop(i, j));
 			Cell.css('left', getPosLeft(i, j));
 		}
 	}
 	//将board转为二维数组
-	for(var i = 0; i < 4; i++) {
+	for (var i = 0; i < 4; i++) {
 		board[i] = new Array();
 		hasConflicted[i] = new Array();
-		for(var j = 0; j < 4; j++) {
+		for (var j = 0; j < 4; j++) {
 			board[i][j] = 0;
 			hasConflicted[i][j] = false;
 		}
@@ -43,20 +43,20 @@ function init() {
 
 }
 
-function updateBoardView() {
+function updateBoardView () {
 	$('.number-cell').remove();
-	for(var i = 0; i < 4; i++) {
-		for(var j = 0; j < 4; j++) {
+	for (var i = 0; i < 4; i++) {
+		for (var j = 0; j < 4; j++) {
 			$('#cell-container').append('<div class="number-cell" id="number-cell-' + i + j + '"></div>');
 			var theNumberCell = $('#number-cell-' + i + j);
-			if(board[i][j] == 0) {
+			if (board[i][j] == 0) {
 				theNumberCell.css('width', 0);
 				theNumberCell.css('height', 0);
-				theNumberCell.css('top', getPosTop(i, j) + 50);
-				theNumberCell.css('left', getPosLeft(i, j) + 50);
+				theNumberCell.css('top', getInitPosTop(i, j));
+				theNumberCell.css('left', getInitPosLeft(i, j));
 			} else {
-				theNumberCell.css('width', '100px');
-				theNumberCell.css('height', '100px');
+				theNumberCell.css('width', '1rem');
+				theNumberCell.css('height', '1rem');
 				theNumberCell.css('top', getPosTop(i, j));
 				theNumberCell.css('left', getPosLeft(i, j));
 				theNumberCell.css('background-color', getBg(board[i][j]));
@@ -69,15 +69,15 @@ function updateBoardView() {
 
 }
 
-function oneNumber() {
-	if(noSpace(board)) {
+function oneNumber () {
+	if (noSpace(board)) {
 		return false;
 	}
 	var randx = parseInt(Math.floor(Math.random() * 4));
 	var randy = parseInt(Math.floor(Math.random() * 4));
 
-	while(true) {
-		if(board[randx][randy] == 0) {
+	while (true) {
+		if (board[randx][randy] == 0) {
 			break;
 		}
 		randx = parseInt(Math.floor(Math.random() * 4));
@@ -90,28 +90,28 @@ function oneNumber() {
 	showNumber(randx, randy, randNumber);
 }
 
-$(document).keydown(function(event) {
-	switch(event.keyCode) {
+$(document).keydown(function (event) {
+	switch (event.keyCode) {
 		case 37: //left
-			if(moveLeft()) {
+			if (moveLeft()) {
 				setTimeout('oneNumber()', 210);
 				setTimeout('isgameover()', 400);
 			}
 			break;
 		case 38: //up
-			if(moveUp()) {
+			if (moveUp()) {
 				setTimeout('oneNumber()', 210);
 				setTimeout('isgameover()', 400);
 			}
 			break;
 		case 39: //right
-			if(moveRight()) {
+			if (moveRight()) {
 				setTimeout('oneNumber()', 210);
 				setTimeout('isgameover()', 400);
 			}
 			break;
 		case 40: //down
-			if(moveDown()) {
+			if (moveDown()) {
 				setTimeout('oneNumber()', 210);
 				setTimeout('isgameover()', 400);
 			}
@@ -121,58 +121,58 @@ $(document).keydown(function(event) {
 	}
 })
 
-$("#cell-container").on('swipeUp', function() {
-	if(moveUp()) {
-				setTimeout('oneNumber()', 210);
-				setTimeout('isgameover()', 400);
-			}
+$("#cell-container").on('swipeUp', function () {
+	if (moveUp()) {
+		setTimeout('oneNumber()', 210);
+		setTimeout('isgameover()', 400);
+	}
 });
-$("#cell-container").on('swipeDown', function() {
-	if(moveDown()) {
-				setTimeout('oneNumber()', 210);
-				setTimeout('isgameover()', 400);
-			}
+$("#cell-container").on('swipeDown', function () {
+	if (moveDown()) {
+		setTimeout('oneNumber()', 210);
+		setTimeout('isgameover()', 400);
+	}
 });
-$("#cell-container").on('swipeLeft', function() {
-	if(moveLeft()) {
-				setTimeout('oneNumber()', 210);
-				setTimeout('isgameover()', 400);
-			}
+$("#cell-container").on('swipeLeft', function () {
+	if (moveLeft()) {
+		setTimeout('oneNumber()', 210);
+		setTimeout('isgameover()', 400);
+	}
 });
-$("#cell-container").on('swipeRight', function() {
-	if(moveRight()) {
-				setTimeout('oneNumber()', 210);
-				setTimeout('isgameover()', 400);
-			}
+$("#cell-container").on('swipeRight', function () {
+	if (moveRight()) {
+		setTimeout('oneNumber()', 210);
+		setTimeout('isgameover()', 400);
+	}
 });
 
-function isgameover() {
-	if(noSpace(board) && noMove(board)) {
+function isgameover () {
+	if (noSpace(board) && noMove(board)) {
 		gameover();
 	}
 }
 
-function gameover() {
+function gameover () {
 	$('.gameover').css('display', 'block');
 }
 
-function moveLeft() {
-	if(!canMoveLeft(board)) {
+function moveLeft () {
+	if (!canMoveLeft(board)) {
 		return false;
 	}
 
-	for(var i = 0; i < 4; i++) {
-		for(var j = 1; j < 4; j++) {
-			if(board[i][j] != 0) {
-				for(var k = 0; k < j; k++) {
-					if(board[i][k] == 0 && noBlockRow(i, k, j, board)) {
+	for (var i = 0; i < 4; i++) {
+		for (var j = 1; j < 4; j++) {
+			if (board[i][j] != 0) {
+				for (var k = 0; k < j; k++) {
+					if (board[i][k] == 0 && noBlockRow(i, k, j, board)) {
 						//移动
 						showMove(i, j, i, k);
 
 						board[i][k] = board[i][j];
 						board[i][j] = 0;
 						continue;
-					} else if(board[i][k] == board[i][j] && noBlockRow(i, k, j, board) && !hasConflicted[i][k]) {
+					} else if (board[i][k] == board[i][j] && noBlockRow(i, k, j, board) && !hasConflicted[i][k]) {
 						//移动
 						showMove(i, j, i, k);
 						//添加
@@ -193,22 +193,22 @@ function moveLeft() {
 	return true;
 }
 
-function moveRight() {
-	if(!canMoveRight(board)) {
+function moveRight () {
+	if (!canMoveRight(board)) {
 		return false;
 	}
 
-	for(var i = 0; i < 4; i++) {
-		for(var j = 2; j >= 0; j--) {
-			if(board[i][j] != 0) {
-				for(var k = 3; k > j; k--) {
-					if(board[i][k] == 0 && noBlockRow(i, j, k, board)) {
+	for (var i = 0; i < 4; i++) {
+		for (var j = 2; j >= 0; j--) {
+			if (board[i][j] != 0) {
+				for (var k = 3; k > j; k--) {
+					if (board[i][k] == 0 && noBlockRow(i, j, k, board)) {
 						//移动
 						showMove(i, j, i, k);
 						board[i][k] = board[i][j];
 						board[i][j] = 0;
 						continue;
-					} else if(board[i][k] == board[i][j] && noBlockRow(i, j, k, board) && !hasConflicted[i][k]) {
+					} else if (board[i][k] == board[i][j] && noBlockRow(i, j, k, board) && !hasConflicted[i][k]) {
 						//移动
 						showMove(i, j, i, k);
 						//添加
@@ -229,22 +229,22 @@ function moveRight() {
 	return true;
 }
 
-function moveUp() {
-	if(!canMoveUp(board)) {
+function moveUp () {
+	if (!canMoveUp(board)) {
 		return false;
 	}
 
-	for(var j = 0; j < 4; j++) {
-		for(var i = 1; i < 4; i++) {
-			if(board[i][j] != 0) {
-				for(var k = 0; k < i; k++) {
-					if(board[k][j] == 0 && noBlockCol(j, k, i, board)) {
+	for (var j = 0; j < 4; j++) {
+		for (var i = 1; i < 4; i++) {
+			if (board[i][j] != 0) {
+				for (var k = 0; k < i; k++) {
+					if (board[k][j] == 0 && noBlockCol(j, k, i, board)) {
 						//移动
 						showMove(i, j, k, j);
 						board[k][j] = board[i][j];
 						board[i][j] = 0;
 						continue;
-					} else if(board[k][j] == board[i][j] && noBlockCol(j, k, i, board) && !hasConflicted[k][j]) {
+					} else if (board[k][j] == board[i][j] && noBlockCol(j, k, i, board) && !hasConflicted[k][j]) {
 						//移动
 						showMove(i, j, k, j);
 						//添加
@@ -265,22 +265,22 @@ function moveUp() {
 	return true;
 }
 
-function moveDown() {
-	if(!canMoveDown(board)) {
+function moveDown () {
+	if (!canMoveDown(board)) {
 		return false;
 	}
 
-	for(var j = 0; j < 4; j++) {
-		for(var i = 2; i >= 0; i--) {
-			if(board[i][j] != 0) {
-				for(var k = 3; k > i; k--) {
-					if(board[k][j] == 0 && noBlockCol(j, i, k, board)) {
+	for (var j = 0; j < 4; j++) {
+		for (var i = 2; i >= 0; i--) {
+			if (board[i][j] != 0) {
+				for (var k = 3; k > i; k--) {
+					if (board[k][j] == 0 && noBlockCol(j, i, k, board)) {
 						//移动
 						showMove(i, j, k, j);
 						board[k][j] = board[i][j];
 						board[i][j] = 0;
 						continue;
-					} else if(board[k][j] == board[i][j] && noBlockCol(j, i, k, board) && !hasConflicted[k][j]) {
+					} else if (board[k][j] == board[i][j] && noBlockCol(j, i, k, board) && !hasConflicted[k][j]) {
 						//移动
 						showMove(i, j, k, j);
 						//添加
@@ -300,6 +300,6 @@ function moveDown() {
 	setTimeout('updateBoardView()', 200);
 	return true;
 }
- $(document).on('touchmove',function(e){
- e.preventDefault();
- })
+$(document).on('touchmove', function (e) {
+	e.preventDefault();
+})
