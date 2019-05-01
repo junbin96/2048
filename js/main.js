@@ -303,3 +303,5 @@ function moveDown () {
 $(document).on('touchmove', function (e) {
 	e.preventDefault();
 })
+document.body.addEventListener('touchmove',bodyScroll,false);  
+$('body').css({'position':'fixed',"width":"100%"});
